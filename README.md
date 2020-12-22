@@ -24,3 +24,7 @@ Based on the information entered the web-based system should perform the followi
 -If a student passes a taught module then the credits earned are 20. For passing dissertation module, credits earned are 60.
 -Based on the number of credits the system should recommend the award of the qualification, 180 credits for MSc in Computing, 120 credits for PG Diploma in Computing
 -Calculate the total average marks obtained (from all of the modules)
+
+HTML 5, CSS, and JavaScript should be used to create the system
+Module information and other information should be represented using JavaScript variables and arrays.
+Your site may be hosted within Brookes on SOTS or on a XAMP/WAMP serveron your own machine. Or you may not need a web server as all the functions are to be implemented using client side technologies: HTML, CSS and JavaScript.
