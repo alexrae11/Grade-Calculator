@@ -2,7 +2,7 @@
  * This function is used to calculate the grade after marks have been input.
  */
 function process() {
-	var modules = ["COMP7001", "COMP7002", "TECH7005", "DALT7002", "SOFT7003", "TECH7004", "TECH7009"];		// array of module names
+	var modules = ["COMP7001", "COMP7002", "TECH7005", "DALT7002", "SOFT7003", "TECH7004", "TECH7009"];		 // array of module names
 	var mark = credit = weightedMark = sumWeightedMarks = sumCredits = avgMark = 0;
 	var count = 1;
 	var grade;
@@ -10,19 +10,19 @@ function process() {
 
 	// loop through each module to calcuate grades
 	modules.forEach(module => {
-		mark = parseFloat(document.getElementById(module).value);											// get module mark from user input
+		mark = parseFloat(document.getElementById(module).value);											 // get module mark from user input
 		if (module == "TECH7009") {
-			credit = modCredit(mark, 60);																	// calculate credit with module mark
-			weightedMark = mark * 60;																		// calculate weighted mark
+			credit = modCredit(mark, 60);																	 // calculate credit with module mark
+			weightedMark = mark * 60;																		 // calculate weighted mark
 		} else {
-			credit = modCredit(mark, 20);																	// calculate credit with module mark
-			weightedMark = mark * 20;																		// calculate weighted mark
+			credit = modCredit(mark, 20);																	 // calculate credit with module mark
+			weightedMark = mark * 20;																		 // calculate weighted mark
 		}
 		
-		sumWeightedMarks += weightedMark;																	// add mark to running total: sumMarks
-		sumCredits += credit;																				// add mark to running total: sumCredits
+		sumWeightedMarks += weightedMark;																	 // add mark to running total: sumMarks
+		sumCredits += credit;																				 // add mark to running total: sumCredits
 
-		grade = getMyGrade(mark);
+		grade = getMyGrade(mark);																			 // calculate the number of grades calculated
 		if (grade == "A") {
 			sumGrades[0] += 1;
 		} else if (grade == "B") {
@@ -33,18 +33,18 @@ function process() {
 			sumGrades[3] += 1;
 		}
 
-		document.getElementById("letterGrade" + count).innerHTML = grade;									// update mark letter on GUI
-		document.getElementById("credits" + count).innerHTML = credit;										// update credit value on GUI
+		document.getElementById("letterGrade" + count).innerHTML = grade;									 // update mark letter on GUI
+		document.getElementById("credits" + count).innerHTML = credit;										 // update credit value on GUI
 		count++;
 	});
 
-	avgMark = sumWeightedMarks / 180;																		// calculate average mark
+	avgMark = sumWeightedMarks / 180;																		 // calculate average mark
 
 	document.getElementById('outputMessage').innerHTML = "You have achieved a percentage of " + avgMark.toFixed(2) + "%, giving you an average grade of a " + getMyGrade(avgMark) + ".";
-	document.getElementById('outputMessage2').innerHTML = "This gives you " + sumCredits + " total credits and overall, " + reward(sumCredits) + ".";
+	document.getElementById('outputMessage2').innerHTML = "This gives you " + sumCredits + " total credits and overall, " + award(sumCredits) + ".";
 	document.getElementById('totalA').innerHTML = sumGrades[0];
 	document.getElementById('totalB').innerHTML = sumGrades[1];
-	document.getElementById('totalB').innerHTML = sumGrades[2];
+	document.getElementById('totalC').innerHTML = sumGrades[2];
 	document.getElementById('totalF').innerHTML = sumGrades[3];
 }
 
@@ -112,16 +112,16 @@ function modCredit(mark, weight) {
  * @param {number} totalCred
  * @return {string}
  */
-function reward(totalCred) {
-	var reward = "0" ;
+function award(totalCred) {
+	var award = "0" ;
 	if (totalCred == 180)
-		reward = "you have achieved a MSc in Computing Science";
+		award = "you have achieved a MSc in Computing Science";
 	else if (totalCred < 180 && totalCred >= 120)
-		reward = "you have achieved a Postgraduate Diploma in Computing Science";
+		award = "you have achieved a Postgraduate Diploma in Computing Science";
 	else if (totalCred < 120 && totalCred >= 60)
-		reward = "you have achieved a Postgraduate Certificate in Computing Science";
+		award = "you have achieved a Postgraduate Certificate in Computing Science";
 	else
-		reward = "you have failed";
+		award = "you have failed";
 
-	return reward;
+	return award;
 }
